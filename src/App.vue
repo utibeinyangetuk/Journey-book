@@ -34,22 +34,15 @@
 
 		<section class="todo-list">
 			<h3>todo list</h3>
-			<div class="list">
-				<div
-					v-for="todo in todos_ascend"
-					:key="todo"
-					:class="`todo-item ${todo.done && 'done'}`"
-				>
-					<label>
-						<input type="checkbox" placeholder="todo.done" v-model="todo.done" />
-					</label>
-					<div class="todo-content">
-						<input type="text" v-model="todo.body" />
-					</div>
-					<div class="actions">
-						<button @click="removeTodo(todo)">delete</button>
-					</div>
-				</div>
+			<div
+				class="list"
+				v-for="todo in todos_ascend"
+				:key="todo"
+				:class="`todo-item ${todo.done && 'done'}`"
+			>
+				<input type="checkbox" placeholder="todo.done" v-model="todo.done" />
+				<input type="text" v-model="todo.body" />
+				<button @click="removeTodo(todo)">delete</button>
 			</div>
 		</section>
 	</div>
@@ -117,6 +110,8 @@
 		border-radius: 5px;
 		padding: 20px;
 		border: 1px solid;
+		box-shadow: 0 2px 8px rgba(101, 101, 101, 0.61);
+		transform: translateX(80%);
 	}
 	.greeting {
 		display: flex;
@@ -224,6 +219,10 @@
 	}
 
 	.todo-list {
-		background: gray;
+		border: 1px solid;
+		margin-top: 10px;
+	}
+	.list {
+		display: flex;
 	}
 </style>
