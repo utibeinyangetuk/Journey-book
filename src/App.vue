@@ -1,30 +1,37 @@
 <template>
 	<div class="app">
 		<section class="greeting">
-			<h2 class="title">
-				What's up,
-				<input type="text" placeholder="Name here" v-model="name" />
+			<h2>
+				welcome back,
+				<input type="text" placeholder="your name" v-model="name" />
 			</h2>
 		</section>
-		<section class="create-todo">
-			<h3>create a todo</h3>
-			<form @submit.prevent.trim="addTodo">
-				<h4>what's on your todo list today?</h4>
-				<input type="text" placeholder="e.g. Read a new novel" v-model="input_content" />
-				<h4>pick a category</h4>
-				<div class="opions">
-					<label>
-						<input type="radio" name="category" value="business" v-model="input_category" />
-						<div>business</div>
-					</label>
-					<label>
-						<input type="radio" name="category" value="personal" v-model="input_category" />
-						<div>personal</div>
-					</label>
-				</div>
-				<input type="submit" value="Add todo" />
-			</form>
-		</section>
+
+		<form @submit.prevent.trim="addTodo">
+			<h4>what's on your todo list today?</h4>
+			<input type="text" placeholder="e.g. Read a new novel" v-model="input_content" />
+			<h3>pick a category</h3>
+			<div class="options">
+				<label>
+					<input type="radio" name="category" value="business" v-model="input_category" />
+					<div>business</div>
+				</label>
+				<label>
+					<input type="radio" name="category" value="personal" v-model="input_category" />
+					<div>personal</div>
+				</label>
+				<label>
+					<input type="radio" name="category" value="education" v-model="input_category" />
+					<div>education</div>
+				</label>
+				<label>
+					<input type="radio" name="category" value="finance" v-model="input_category" />
+					<div>finance</div>
+				</label>
+			</div>
+			<button>add todo</button>
+		</form>
+
 		<section class="todo-list">
 			<h3>todo list</h3>
 			<div class="list">
@@ -94,13 +101,129 @@
 		todos.value = JSON.parse(localStorage.getItem('todos')) || []
 	})
 </script>
+
 <style>
 	#app {
 		font-family: Avenir, Helvetica, Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		margin-top: 40px;
+	}
+
+	.app {
+		width: 500px;
+		height: 100%;
+		min-height: 70vh;
+		border-radius: 5px;
+		padding: 20px;
+		border: 1px solid;
+	}
+	.greeting {
+		display: flex;
+		justify-content: center;
+	}
+	.greeting h2 {
+		font-size: 18px;
+		text-transform: capitalize;
+		letter-spacing: 1.4px;
+		color: rgb(101, 101, 101);
+	}
+
+	.greeting input {
+		min-width: 100px;
+		padding: 5px;
+		border: none;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.343);
+		text-transform: capitalize;
+		font-size: 15px;
+		font-weight: bold;
+		letter-spacing: 1.4px;
+	}
+	.greeting input::placeholder {
+		text-transform: capitalize;
+		font-size: 15px;
+		font-family: cursive;
+	}
+	.greeting input:focus {
+		outline: none;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	form h4 {
+		letter-spacing: 2px;
+		text-transform: capitalize;
+		font-size: 15px;
+		font-weight: bold;
+		color: gray;
+	}
+	form h3 {
+		text-transform: capitalize;
+		font-size: 17px;
+		letter-spacing: 1.4px;
+		color: gray;
+	}
+	form input[type='text'] {
+		width: 400px;
+		padding: 7px;
+		border: none;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.343);
+	}
+	form input[type='text']:focus {
+		outline: none;
+	}
+
+	form input[type='text']::placeholder {
+		letter-spacing: 2px;
+		font-size: 12px;
+	}
+
+	.options {
+		display: flex;
+	}
+	.options label {
+		margin-left: 20px;
+		width: 100px;
+		height: 60px;
+		border-radius: 3px;
+		border: 1px solid;
+		display: flex;
+		flex-direction: column;
 		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
+		box-shadow: 0 2px 8px rgba(4, 4, 4, 0.225);
+	}
+	.options label div {
+		text-transform: capitalize;
+		font-size: 13px;
+		font-weight: bold;
+		letter-spacing: 1.4px;
+		margin-top: 20px;
+		color: rgba(0, 0, 0, 0.844);
+	}
+
+	.options input[type='radio'] {
+		margin-top: 10px;
+		margin-bottom: -10px;
+	}
+
+	form button {
+		width: 200px;
+		margin-top: 20px;
+		padding: 7px;
+		border: none;
+		border-radius: 3px;
+		cursor: pointer;
+		border: 1px solid gray;
+		text-transform: uppercase;
+		font-weight: bold;
+		letter-spacing: 2px;
+		font-size: 12px;
+	}
+
+	.todo-list {
+		background: gray;
 	}
 </style>
