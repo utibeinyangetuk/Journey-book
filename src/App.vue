@@ -111,7 +111,10 @@
 		padding: 20px;
 		border: 1px solid;
 		box-shadow: 0 2px 8px rgba(101, 101, 101, 0.61);
-		transform: translateX(80%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 	.greeting {
 		display: flex;
