@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div class="greeting">
+		<div class="wrapper">
 			<h1 v-if="!saveduser">
 				{{ greeting }}, <input type="text" placeholder="your name" v-model="user" />
 			</h1>
